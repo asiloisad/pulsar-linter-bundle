@@ -1,0 +1,123 @@
+{
+  "name": "linter-bundle",
+  "main": "./lib/index.js",
+  "version": "1.0.0",
+  "description": "Unified linting package with UI",
+  "repository": "https://github.com/asiloisad/pulsar-linter-bundle",
+  "license": "MIT",
+  "keywords": [
+    "linter",
+    "lint",
+    "pulsar",
+    "atom"
+  ],
+  "engines": {
+    "atom": ">=1.14.0 <3.0.0"
+  },
+  "consumedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "consumeLinter"
+      }
+    },
+    "linter-ui": {
+      "versions": {
+        "1.0.0": "consumeLinterUI"
+      }
+    },
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "providedServices": {
+    "linter-indie": {
+      "versions": {
+        "2.0.0": "provideIndie"
+      }
+    }
+  },
+  "activationHooks": [
+    "core:loaded-shell-environment"
+  ],
+  "dependencies": {
+    "atom-select-list": "^0.8.1",
+    "etch": "^0.14.1",
+    "lodash": "^4.17.21",
+    "minimatch": "^10.1.1"
+  },
+  "configSchema": {
+    "lintPreviewTabs": {
+      "type": "boolean",
+      "description": "Lint tabs while they are still in preview status",
+      "default": true,
+      "order": 1
+    },
+    "lintOnOpen": {
+      "title": "Lint on Open",
+      "description": "Lint files automatically when they are opened",
+      "type": "boolean",
+      "default": true,
+      "order": 2
+    },
+    "lintOnChange": {
+      "title": "Lint on Change",
+      "description": "Lint files while typing, without the need to save (only for supported providers)",
+      "type": "boolean",
+      "default": true,
+      "order": 3
+    },
+    "lintOnChangeInterval": {
+      "title": "Lint on Change Interval",
+      "description": "Interval at which linting is done as you type (in ms)",
+      "type": "integer",
+      "default": 300,
+      "order": 4
+    },
+    "ignoreGlob": {
+      "title": "Ignore files matching this Glob",
+      "type": "string",
+      "default": "**/*.min.{js,css}",
+      "order": 5
+    },
+    "disabledProviders": {
+      "title": "Disabled providers",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Names of disabled linter providers",
+      "default": [],
+      "order": 6
+    },
+    "defaultSortMethod": {
+      "title": "Default Sort Method",
+      "description": "Choose the default sorting method for linter messages",
+      "type": "string",
+      "default": "position",
+      "enum": [
+        {
+          "value": "position",
+          "description": "Sort by line number only"
+        },
+        {
+          "value": "severity",
+          "description": "Sort by severity (error, warning, info) then line number"
+        },
+        {
+          "value": "provider",
+          "description": "Sort by provider name alphabetically"
+        }
+      ],
+      "order": 7
+    },
+    "showHoverTooltip": {
+      "title": "Show Hover Tooltip",
+      "description": "Show linter messages when hovering over issues in the editor",
+      "type": "boolean",
+      "default": true,
+      "order": 8
+    }
+  }
+}

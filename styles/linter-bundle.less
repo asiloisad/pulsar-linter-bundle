@@ -1,0 +1,270 @@
+@import "ui-variables";
+
+.linter-text {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  &.error {
+    text-decoration-color: @text-color-error;
+  }
+  &.warning {
+    text-decoration-color: @text-color-warning;
+  }
+  &.info {
+    text-decoration-color: @text-color-info;
+  }
+}
+
+.linter-high {
+  border-radius: 3px;
+  z-index: 100;
+  &.error {
+    background-color: fade(@background-color-error, 10%);
+  }
+  &.warning {
+    background-color: fade(@background-color-warning, 10%);
+  }
+  &.info {
+    background-color: fade(@background-color-info, 10%);
+  }
+}
+
+.linter-status {
+  a {
+    padding-left: 0.5em;
+    &.text-error {
+      color: @text-color-error;
+    }
+    &.text-warning {
+      color: @text-color-warning;
+    }
+    &.text-info {
+      color: @text-color-info;
+    }
+  }
+  a::before {
+    margin-right: 0.25em;
+    width: auto;
+  }
+}
+
+.linter-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  cursor: default;
+
+  .linter-table {
+    width: 100%;
+
+    >thead {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background-color: @background-color-highlight;
+    }
+
+    border: unset;
+
+    th, td {
+      padding: 0.3em 0.5em;
+      border: 1px solid @base-border-color;
+      border-top: 1px;
+      p {
+        margin-bottom: unset;
+      }
+    }
+
+    // Description header styling
+    th:last-child {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 0;
+    }
+
+    .linter-header-title {
+      padding: 0.3em 0.5em;
+      display: flex;
+      align-items: center;
+    }
+
+    th:nth-child(1),th:nth-child(2),th:nth-child(3) {
+      white-space: nowrap;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      width: 8%;
+
+      &:hover {
+        background-color: fade(@text-color-highlight, 10%);
+      }
+
+      &.linter-header-active {
+        font-weight: bold;
+        background-color: fade(@text-color-highlight, 15%);
+      }
+    }
+
+    .linter-toggles {
+      display: flex;
+      align-items: stretch;
+
+      .input-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        width: 15px;
+        cursor: pointer;
+        border-left: 1px solid @base-border-color;
+        font-size: 0.9em;
+        transition: background-color 0.2s;
+
+        input {
+          display: none;
+        }
+
+        &.error {
+          &:hover { background-color: fade(@text-color-error, 10%); }
+          &:has(input:checked) { background-color: fade(@text-color-error, 20%); font-weight: bold; }
+          &:has(input:checked):hover { background-color: fade(@text-color-error, 30%); }
+        }
+
+        &.warning {
+          &:hover { background-color: fade(@text-color-warning, 10%); }
+          &:has(input:checked) { background-color: fade(@text-color-warning, 20%); font-weight: bold; }
+          &:has(input:checked):hover { background-color: fade(@text-color-warning, 30%); }
+        }
+
+        &.info {
+          &:hover { background-color: fade(@text-color-info, 10%); }
+          &:has(input:checked) { background-color: fade(@text-color-info, 20%); font-weight: bold; }
+          &:has(input:checked):hover { background-color: fade(@text-color-info, 30%); }
+        }
+      }
+    }
+
+    .linter-row {
+      transition: background-color 0.15s ease-out;
+      cursor: pointer;
+
+      &:hover {
+        &.error {
+          background-color: fade(@background-color-error, 8%);
+        }
+        &.warning {
+          background-color: fade(@background-color-warning, 8%);
+        }
+        &.info {
+          background-color: fade(@background-color-info, 8%);
+        }
+      }
+
+      &.current {
+        &.error {
+          background-color: fade(@background-color-error, 25%);
+        }
+        &.warning {
+          background-color: fade(@background-color-warning, 25%);
+        }
+        &.info {
+          background-color: fade(@background-color-info, 25%);
+        }
+
+        &:hover {
+          &.error {
+            background-color: fade(@background-color-error, 30%);
+          }
+          &.warning {
+            background-color: fade(@background-color-warning, 30%);
+          }
+          &.info {
+            background-color: fade(@background-color-info, 30%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.linter-bubble-tooltip {
+  position: fixed;
+  max-width: 400px;
+  z-index: 1000;
+  background-color: @base-background-color;
+  border: 1px solid @base-border-color;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  // Animation
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.hiding {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  &.error {
+    border-color: @background-color-error;
+  }
+  &.warning {
+    border-color: @background-color-warning;
+  }
+  &.info {
+    border-color: @background-color-info;
+  }
+
+  .linter-bubble-item {
+    display: flex;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid @base-border-color;
+    }
+
+    &.error .linter-bubble-sidebar {
+      background-color: @background-color-error;
+      color: contrast(@background-color-error);
+    }
+    &.warning .linter-bubble-sidebar {
+      background-color: @background-color-warning;
+      color: contrast(@background-color-warning);
+    }
+    &.info .linter-bubble-sidebar {
+      background-color: @background-color-info;
+      color: contrast(@background-color-info);
+    }
+  }
+
+  .linter-bubble-sidebar {
+    padding: 8px;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .linter-bubble-content {
+    padding: 8px;
+    flex: 1;
+
+    p {
+      margin: 0;
+    }
+
+    code {
+      background-color: @background-color-highlight;
+      padding: 1px 4px;
+      border-radius: 2px;
+    }
+  }
+}

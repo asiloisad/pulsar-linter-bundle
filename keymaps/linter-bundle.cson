@@ -1,0 +1,6 @@
+'atom-workspace':
+  'alt-l': 'linter-bundle:toggle-panel'
+
+'atom-text-editor:not([mini])':
+  'alt-;': 'linter-bundle:previous'
+  "alt-'": 'linter-bundle:next'
