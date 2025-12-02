@@ -118,6 +118,22 @@
       "type": "boolean",
       "default": true,
       "order": 8
+    },
+    "largeFileLineCount": {
+      "title": "Large File Line Count",
+      "description": "Skip inline decorations for files with more lines than this (panel still works)",
+      "type": "integer",
+      "default": 20000,
+      "minimum": 1000,
+      "order": 9
+    },
+    "longLineLength": {
+      "title": "Long Line Length",
+      "description": "Skip inline decorations if any line exceeds this length",
+      "type": "integer",
+      "default": 4000,
+      "minimum": 500,
+      "order": 10
     }
   }
 }
