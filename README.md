@@ -39,6 +39,11 @@ To install `linter-bundle` search for [linter-bundle](https://web.pulsar-edit.de
 | `ignoreGlob` | Glob pattern for files to ignore | `**/*.min.{js,css}` |
 | `disabledProviders` | List of disabled linter provider names | `[]` |
 | `defaultSortMethod` | Default sort method for linter panel | `position` |
+| `showHoverTooltip` | Show linter messages when hovering over issues | `true` |
+| `largeFileLineCount` | Skip inline decorations for files with more lines | `20000` |
+| `longLineLength` | Skip inline decorations if any line exceeds this length | `4000` |
+| `scrollMapState` | Display linter markers on scroll bar | `true` |
+| `scrollMapThreshold` | Maximum markers to display (0 = unlimited) | `0` |
 
 ## Services
 
@@ -89,6 +94,22 @@ module.exports = {
     };
   },
 };
+```
+
+#### `scroll-map` (v1.0.0)
+
+The package integrates with [scroll-map](https://github.com/asiloisad/pulsar-scroll-map) to display linter message markers on the scroll bar. When both packages are installed, error, warning, and info markers appear on the scroll bar for quick navigation to issues.
+
+- **Scroll Map**: Enable/disable markers via `scrollMapState` setting
+- **Scroll Map Threshold**: Limit marker count via `scrollMapThreshold` setting (0 = unlimited)
+
+To customize the marker appearance, add to your `styles.less`:
+```less
+.scroll-map .scroll-item {
+  &.error { background-color: @text-color-error; }
+  &.warning { background-color: @text-color-warning; }
+  &.info { background-color: @text-color-info; }
+}
 ```
 
 ### Provided Services

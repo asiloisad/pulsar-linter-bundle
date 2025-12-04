@@ -254,3 +254,18 @@
     }
   }
 }
+
+// scroll-map layer
+.scroll-map .scroll-item.linter-layer {
+  height: 6px;
+  z-index: 10;
+  &.error {
+    background-color: @text-color-error;
+  }
+  &.warning {
+    background-color: @text-color-warning;
+  }
+  &.info {
+    background-color: @text-color-info;
+  }
+}
