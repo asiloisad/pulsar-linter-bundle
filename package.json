@@ -32,7 +32,7 @@
     },
     "scroll-map": {
       "versions": {
-        "^1.0.0": "consumeScrollMap"
+        "^2.0.0": "consumeScrollMap"
       }
     }
   },
@@ -146,14 +146,6 @@
       "title": "Scroll Map",
       "description": "Display linter markers on scroll bar.",
       "default": true
-    },
-    "scrollMapThreshold": {
-      "order": 12,
-      "type": "integer",
-      "title": "Scroll Map Threshold",
-      "description": "Maximum number of markers to display. The limit doesn't apply if zero.",
-      "minimum": 0,
-      "default": 0
     }
   }
 }
