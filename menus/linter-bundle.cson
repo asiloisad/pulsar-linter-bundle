@@ -18,8 +18,7 @@
           {'label': 'Previous Issue', 'command': 'linter-bundle:previous'}
           {'label': 'Inspect Issue', 'command': 'linter-bundle:inspect'}
           {'type': 'separator'}
-          {'label': 'Enable Linter', 'command': 'linter-bundle:enable-linter'}
-          {'label': 'Disable Linter', 'command': 'linter-bundle:disable-linter'}
+          {'label': 'Toggle Linter', 'command': 'linter-bundle:toggle-linter'}
           {'label': 'Toggle Active Editor Linting', 'command': 'linter-bundle:toggle-active-editor'}
         ]
       }
