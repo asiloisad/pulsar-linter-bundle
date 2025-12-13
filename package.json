@@ -29,11 +29,6 @@
       "versions": {
         "^1.0.0": "consumeStatusBar"
       }
-    },
-    "scroll-map": {
-      "versions": {
-        "^2.0.0": "consumeScrollMap"
-      }
     }
   },
   "providedServices": {
@@ -139,13 +134,6 @@
       "default": 4000,
       "minimum": 500,
       "order": 10
-    },
-    "scrollMapState": {
-      "order": 11,
-      "type": "boolean",
-      "title": "Scroll Map",
-      "description": "Display linter markers on scroll bar.",
-      "default": true
     }
   }
 }
