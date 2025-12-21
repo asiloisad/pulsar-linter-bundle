@@ -102,28 +102,6 @@ module.exports = {
 };
 ```
 
-#### `scroll-map` (v1.0.0)
-
-The package integrates with [scroll-map](https://github.com/asiloisad/pulsar-scroll-map) to display linter message markers on the scroll bar. When both packages are installed, error, warning, and info markers appear on the scroll bar for quick navigation to issues.
-
-- **Scroll Map**: Enable/disable markers via `scrollMapState` setting
-
-To customize the marker appearance, add to your `styles.less`:
-
-```less
-.scroll-map .scroll-item {
-  &.error {
-    background-color: @text-color-error;
-  }
-  &.warning {
-    background-color: @text-color-warning;
-  }
-  &.info {
-    background-color: @text-color-info;
-  }
-}
-```
-
 ### Provided Services
 
 #### `linter-indie` (v2.0.0)
