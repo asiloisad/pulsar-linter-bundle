@@ -36,6 +36,11 @@
       "versions": {
         "2.0.0": "provideIndie"
       }
+    },
+    "mcp-tools": {
+      "versions": {
+        "1.0.0": "provideMcpTools"
+      }
     }
   },
   "activationHooks": [
