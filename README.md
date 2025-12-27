@@ -1,14 +1,14 @@
 # linter-bundle
 
-A unified linting package that combines linting infrastructure with an integrated UI.
+A unified linting package that combines linting infrastructure with an integrated UI. Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](https://github.com/steelbrain/linter-ui-default).
 
-- **Unified Package**: Combines linter core functionality with UI in a single package
-- **Status Bar Integration**: Shows error, warning, and info counts in the status bar
-- **Linter Panel**: Sortable table view of all linter messages with filtering
-- **Inline Bubbles**: Hover-style message display at cursor position
-- **Editor Highlighting**: Underline and highlight decorations for linted ranges
-- **Multiple Sort Methods**: Sort by severity, position, or provider
-- **Linter Management**: Enable/disable individual linter providers
+- **Unified Package**: Combines linter core functionality with UI in a single package.
+- **Status Bar Integration**: Shows error, warning, and info counts in the status bar.
+- **Linter Panel**: Sortable table view of all linter messages with filtering.
+- **Inline Bubbles**: Hover-style message display at cursor position.
+- **Editor Highlighting**: Underline and highlight decorations for linted ranges.
+- **Multiple Sort Methods**: Sort by severity, position, or provider.
+- **Linter Management**: Enable/disable individual linter providers.
 
 ## Installation
 
@@ -143,7 +143,3 @@ module.exports = {
 # Contributing
 
 Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub — any feedback’s welcome!
-
-# Credits
-
-Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](https://github.com/steelbrain/linter-ui-default) packages.
