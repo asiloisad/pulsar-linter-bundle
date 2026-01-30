@@ -139,6 +139,27 @@
       }
     }
 
+    .linter-position {
+      white-space: nowrap;
+
+      .linter-log-ref {
+        margin-left: 0.5em;
+        padding: 0 0.3em;
+        font-size: 0.85em;
+        color: @text-color-subtle;
+        background-color: fade(@background-color-highlight, 50%);
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.15s ease, color 0.15s ease;
+
+        &:hover {
+          color: @text-color-highlight;
+          background-color: @background-color-highlight;
+        }
+      }
+    }
+
     .linter-row {
       transition: background-color 0.15s ease-out;
       cursor: pointer;
@@ -262,6 +283,24 @@
       background-color: @background-color-highlight;
       padding: 1px 4px;
       border-radius: 2px;
+    }
+
+    .linter-log-ref {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 6px;
+      font-size: 0.85em;
+      color: @text-color-subtle;
+      background-color: fade(@background-color-highlight, 50%);
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease;
+
+      &:hover {
+        color: @text-color-highlight;
+        background-color: @background-color-highlight;
+      }
     }
   }
 }
