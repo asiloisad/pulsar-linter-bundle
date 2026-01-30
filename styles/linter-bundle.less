@@ -23,6 +23,32 @@
   }
 }
 
+// Gutter line-number styling for lines with linter messages
+.linter-line-number {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0.5em;
+    top: calc(50% - 0.5px);
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+
+  &.error::after {
+    background-color: @background-color-error;
+  }
+  &.warning::after {
+    background-color: @background-color-warning;
+  }
+  &.info::after {
+    background-color: @background-color-info;
+  }
+}
+
 .linter-status {
   a + a {
     margin-left: 0.5em;
