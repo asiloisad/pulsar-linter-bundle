@@ -32,7 +32,7 @@ Commands available in `atom-text-editor:not([mini])`:
 
 - `linter-bundle:lint`: manually trigger linting on the current file,
 - `linter-bundle:debug`: show debug information about active linters,
-- `linter-bundle:toggle-active-editor`: toggle linting for the current editor,
+- `linter-bundle:state`: toggle linting for the current editor,
 - `linter-bundle:inspect`: show message bubble at cursor position,
 - `linter-bundle:next`: (`Alt+'`) jump to next linter message,
 - `linter-bundle:previous`: (`Alt+;`) jump to previous linter message,
