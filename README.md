@@ -16,6 +16,7 @@ Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](h
 - **Scrollmap**: Shows linter markers in the scrollbar via [scrollmap](https://github.com/asiloisad/pulsar-scrollmap).
 - **Reference links**: Clickable references in messages to open related files. See [latex-tools](https://github.com/asiloisad/pulsar-latex-tools) for usage example.
 - **Markdown rendering**: Message excerpts support markdown formatting in tooltips and panel.
+- **MCP Tool**: Provides `GetLinterMessages` tool via [pulsar-mcp](https://github.com/asiloisad/pulsar-pulsar-mcp).
 
 ## Installation
 
