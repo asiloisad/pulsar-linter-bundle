@@ -1,25 +1,17 @@
 @import "ui-variables";
 
-.wavy_border(@color) {
-  background-image:
-    linear-gradient(45deg, transparent 65%, @color 80%, transparent 90%),
-    linear-gradient(135deg, transparent 5%, @color 15%, transparent 25%),
-    linear-gradient(135deg, transparent 45%, @color 55%, transparent 65%),
-    linear-gradient(45deg, transparent 25%, @color 35%, transparent 50%);
-  background-size: 10px 3px;
-  background-repeat: repeat-x;
-  background-position: left bottom;
-}
-
 .linter-text {
+  text-decoration: underline dashed;
+  text-underline-offset: 3px;
+
   &.error {
-    .wavy_border(@text-color-error);
+    text-decoration-color: @text-color-error;
   }
   &.warning {
-    .wavy_border(@text-color-warning);
+    text-decoration-color: @text-color-warning;
   }
   &.info {
-    .wavy_border(@text-color-info);
+    text-decoration-color: @text-color-info;
   }
 }
 
