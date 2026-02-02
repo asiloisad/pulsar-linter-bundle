@@ -2,6 +2,8 @@
 
 A unified linting package that combines linting infrastructure with an integrated UI.
 
+![panel](https://github.com/asiloisad/pulsar-linter-bundle/blob/master/assets/panel.png?raw=true)
+
 Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](https://github.com/steelbrain/linter-ui-default).
 
 ## Features
