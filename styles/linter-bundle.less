@@ -102,7 +102,7 @@
       align-items: center;
     }
 
-    th:nth-child(1),th:nth-child(2),th:nth-child(3) {
+    .linter-header-sortable {
       white-space: nowrap;
       user-select: none;
       transition: background-color 0.2s ease;
@@ -121,6 +121,27 @@
     .linter-toggles {
       display: flex;
       align-items: stretch;
+
+      .linter-view-tab {
+        display: flex;
+        align-items: center;
+        padding: 0 0.5em;
+        cursor: pointer;
+        user-select: none;
+        color: @text-color-subtle;
+        border-left: 1px solid @base-border-color;
+        transition: background-color 0.2s, color 0.15s ease;
+
+        &:hover {
+          color: @text-color-highlight;
+          background-color: fade(@text-color-highlight, 10%);
+        }
+
+        &.active {
+          color: @text-color-highlight;
+          font-weight: bold;
+        }
+      }
 
       .input-label {
         display: flex;
@@ -159,6 +180,14 @@
 
     .linter-position {
       white-space: nowrap;
+
+      .linter-file-path {
+        color: @text-color-subtle;
+      }
+
+      .linter-file-line {
+        color: @text-color;
+      }
 
       .linter-log-ref {
         margin-left: 0.5em;
