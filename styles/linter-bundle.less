@@ -1,5 +1,9 @@
 @import "ui-variables";
 
+:root {
+  --linter-dot-size: 4px;
+}
+
 .linter-text {
   text-decoration: underline dashed;
   text-underline-offset: 0.25em;
@@ -16,28 +20,21 @@
 }
 
 // Gutter line-number styling for lines with linter messages
+// Uses radial-gradient instead of ::after pseudo-element to avoid
+// conflicts with other gutter decorations (e.g. git-line-removed)
 .linter-line-number {
-  position: relative;
+  background-repeat: no-repeat;
+  background-size: var(--linter-dot-size) var(--linter-dot-size);
+  background-position: calc(100% - 0.5em) 50%;
 
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0.5em;
-    top: calc(50% - 0.5px);
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
+  &.error {
+    background-image: radial-gradient(circle, @background-color-error calc(var(--linter-dot-size) / 2), transparent calc(var(--linter-dot-size) / 2));
   }
-
-  &.error::after {
-    background-color: @background-color-error;
+  &.warning {
+    background-image: radial-gradient(circle, @background-color-warning calc(var(--linter-dot-size) / 2), transparent calc(var(--linter-dot-size) / 2));
   }
-  &.warning::after {
-    background-color: @background-color-warning;
-  }
-  &.info::after {
-    background-color: @background-color-info;
+  &.info {
+    background-image: radial-gradient(circle, @background-color-info calc(var(--linter-dot-size) / 2), transparent calc(var(--linter-dot-size) / 2));
   }
 }
 
