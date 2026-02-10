@@ -9,7 +9,7 @@ Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](h
 ## Features
 
 - **Unified Package**: Combines linter core functionality with UI in a single package.
-- **Status Bar Integration**: Shows error, warning, and info counts in the status bar. Left-click toggles panel, middle-click clears messages, right-click jumps to next.
+- **Status Bar Integration**: Shows error, warning, and info counts in the status bar. Left-click toggles panel, middle-click clears messages, right-click toggles file/project mode, Ctrl+left-click jumps to next, Ctrl+right-click jumps to previous.
 - **Linter Panel**: Sortable table view of all linter messages with filtering.
 - **Inline Bubbles**: Hover-style message display at cursor position.
 - **Editor Highlighting**: Underline and highlight decorations for linted ranges.
