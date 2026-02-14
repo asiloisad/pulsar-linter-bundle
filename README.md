@@ -57,13 +57,58 @@ Commands available in `atom-text-editor:not([mini])`:
 | `longLineLength` | Skip inline decorations if any line exceeds this length | `4000` |
 | `scrollMapState` | Display linter markers on scroll bar | `true` |
 
-## Service
+## Provided Service `linter-indie`
 
-### Consumed
+Indie linter delegate for custom integrations. Allows packages to push linter messages directly without implementing the full linter provider interface.
 
-#### `linter` (v2.0.0)
+In your `package.json`:
 
-Standard linter provider interface. Packages like `linter-eslint`, `linter-ruff`, etc. provide this service.
+```json
+{
+  "consumedServices": {
+    "linter-indie": {
+      "versions": { "2.0.0": "consumeIndie" }
+    }
+  }
+}
+```
+
+In your main module:
+
+```javascript
+module.exports = {
+  consumeIndie(registerIndie) {
+    const indie = registerIndie({ name: "my-indie-linter" });
+
+    // Set messages for a specific file
+    indie.setMessages("/path/to/file.js", [
+      {
+        severity: "warning",
+        location: {
+          file: "/path/to/file.js",
+          position: [
+            [0, 0],
+            [0, 1],
+          ],
+        },
+        excerpt: "Warning message",
+      },
+    ]);
+
+    // Or set all messages at once
+    indie.setAllMessages([
+      /* messages */
+    ]);
+
+    // Clear all messages
+    indie.clearMessages();
+  },
+};
+```
+
+## Consumed Service `linter`
+
+Standard linter provider interface. Packages like `linter-eslint`, `linter-ruff`, etc. provide this service to report diagnostics.
 
 ```javascript
 // Provider example
@@ -94,9 +139,9 @@ module.exports = {
 };
 ```
 
-#### `linter-ui` (v1.0.0)
+## Consumed Service `linter-ui`
 
-External UI providers that want to display linter messages. Used by packages like `linter-bundle` to show linter markers on the scrollbar.
+External UI providers that want to display linter messages. Used by packages like scrollmap to show linter markers on the scrollbar.
 
 ```javascript
 // UI provider example
@@ -111,44 +156,6 @@ module.exports = {
       didFinishLinting({ linter, filePath }) {},
       dispose() {},
     };
-  },
-};
-```
-
-### Provided
-
-#### `linter-indie` (v2.0.0)
-
-Indie linter delegate for custom integrations. Allows packages to push linter messages directly without implementing the full linter provider interface.
-
-```javascript
-// Consumer example
-module.exports = {
-  consumeIndie(registerIndie) {
-    const indie = registerIndie({ name: "my-indie-linter" });
-
-    // Set messages for a specific file
-    indie.setMessages("/path/to/file.js", [
-      {
-        severity: "warning",
-        location: {
-          file: "/path/to/file.js",
-          position: [
-            [0, 0],
-            [0, 1],
-          ],
-        },
-        excerpt: "Warning message",
-      },
-    ]);
-
-    // Or set all messages at once
-    indie.setAllMessages([
-      /* messages */
-    ]);
-
-    // Clear all messages
-    indie.clearMessages();
   },
 };
 ```
