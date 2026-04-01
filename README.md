@@ -28,7 +28,7 @@ To install `linter-bundle` search for [linter-bundle](https://web.pulsar-edit.de
 
 Commands available in `atom-workspace`:
 
-- `linter-bundle:toggle-panel`: (`Alt+L`) toggle the linter panel visibility,
+- `linter-bundle:toggle-panel`: <kbd>Alt+L</kbd> toggle the linter panel visibility,
 - `linter-bundle:toggle-linter`: toggle a linter provider on/off.
 
 Commands available in `atom-text-editor:not([mini])`:
@@ -37,8 +37,8 @@ Commands available in `atom-text-editor:not([mini])`:
 - `linter-bundle:debug`: show debug information about active linters,
 - `linter-bundle:state`: toggle linting for the current editor,
 - `linter-bundle:inspect`: show message bubble at cursor position,
-- `linter-bundle:next`: (`Alt+'`) jump to next linter message,
-- `linter-bundle:previous`: (`Alt+;`) jump to previous linter message,
+- `linter-bundle:next`: <kbd>Alt+'</kbd> jump to next linter message,
+- `linter-bundle:previous`: <kbd>Alt+;</kbd> jump to previous linter message,
 - `linter-bundle:clear`: clear linter messages for the current editor.
 
 ## Configuration
