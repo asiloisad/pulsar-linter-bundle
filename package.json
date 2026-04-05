@@ -139,6 +139,13 @@
       "default": 4000,
       "minimum": 500,
       "order": 10
+    },
+    "statusMode": {
+      "title": "Status-bar item always visible",
+      "description": "When disabled, the status-bar item is hidden while there are no messages",
+      "type": "boolean",
+      "default": true,
+      "order": 11
     }
   }
 }
