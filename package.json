@@ -146,6 +146,13 @@
       "type": "boolean",
       "default": true,
       "order": 11
+    },
+    "editorScrollPosition": {
+      "order": 12,
+      "title": "Editor scroll position",
+      "description": "Scroll zone as % of viewport height. Single value e.g. `0` is strict mode (always scroll cursor to that position). Two values e.g. `0-50` define a lazy zone (scroll only when cursor exits the zone). 0 = top margin, 100 = bottom margin.",
+      "type": "string",
+      "default": "0-50"
     }
   }
 }
