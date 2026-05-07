@@ -72,18 +72,42 @@
 }
 
 .linter-wrapper {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
 
   .linter-table {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    table-layout: fixed;
 
     >thead {
-      position: sticky;
-      top: 0;
       z-index: 3;
       background-color: @background-color-highlight;
+      flex: 0 0 auto;
+    }
+
+    >tbody {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    >thead,
+    >tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    >tbody {
+      display: block;
     }
 
     border: unset;
@@ -115,7 +139,6 @@
       white-space: nowrap;
       user-select: none;
       transition: background-color 0.2s ease;
-      width: 8%;
 
       &:hover {
         background-color: fade(@text-color-highlight, 10%);
@@ -125,6 +148,21 @@
         font-weight: bold;
         background-color: fade(@text-color-highlight, 15%);
       }
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 8%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 12%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 18%;
     }
 
     .linter-toggles {
@@ -189,13 +227,23 @@
 
     .linter-position {
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       .linter-file-path {
         color: @text-color-subtle;
+        display: inline-block;
+        max-width: calc(100% - 4.5em);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        direction: rtl;
+        text-align: left;
+        vertical-align: bottom;
       }
 
       .linter-file-line {
         color: @text-color;
+        white-space: nowrap;
       }
 
       .linter-log-ref {
