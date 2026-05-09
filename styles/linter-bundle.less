@@ -28,13 +28,25 @@
   background-position: calc(100% - 0.5em) 50%;
 
   &.error {
-    background-image: radial-gradient(circle, @background-color-error calc(var(--linter-dot-size) / 2), transparent calc(var(--linter-dot-size) / 2));
+    background-image: radial-gradient(
+      circle,
+      @background-color-error calc(var(--linter-dot-size) / 2),
+      transparent calc(var(--linter-dot-size) / 2)
+    );
   }
   &.warning {
-    background-image: radial-gradient(circle, @background-color-warning calc(var(--linter-dot-size) / 2), transparent calc(var(--linter-dot-size) / 2));
+    background-image: radial-gradient(
+      circle,
+      @background-color-warning calc(var(--linter-dot-size) / 2),
+      transparent calc(var(--linter-dot-size) / 2)
+    );
   }
   &.info {
-    background-image: radial-gradient(circle, @background-color-info calc(var(--linter-dot-size) / 2), transparent calc(var(--linter-dot-size) / 2));
+    background-image: radial-gradient(
+      circle,
+      @background-color-info calc(var(--linter-dot-size) / 2),
+      transparent calc(var(--linter-dot-size) / 2)
+    );
   }
 }
 
@@ -86,33 +98,34 @@
     flex-direction: column;
     table-layout: fixed;
 
-    >thead {
+    > thead {
       z-index: 3;
       background-color: @background-color-highlight;
       flex: 0 0 auto;
     }
 
-    >tbody {
+    > tbody {
       flex: 1 1 auto;
       min-height: 0;
       overflow-y: auto;
       overflow-x: hidden;
     }
 
-    >thead,
-    >tbody tr {
+    > thead,
+    > tbody tr {
       display: table;
       width: 100%;
       table-layout: fixed;
     }
 
-    >tbody {
+    > tbody {
       display: block;
     }
 
     border: unset;
 
-    th, td {
+    th,
+    td {
       padding: 0.3em 0.5em;
       border: 1px solid @base-border-color;
       border-top: 1px;
@@ -177,7 +190,9 @@
         user-select: none;
         color: @text-color-subtle;
         border-left: 1px solid @base-border-color;
-        transition: background-color 0.2s, color 0.15s ease;
+        transition:
+          background-color 0.2s,
+          color 0.15s ease;
 
         &:hover {
           color: @text-color-highlight;
@@ -206,21 +221,42 @@
         }
 
         &.error {
-          &:hover { background-color: fade(@text-color-error, 10%); }
-          &:has(input:checked) { background-color: fade(@text-color-error, 20%); font-weight: bold; }
-          &:has(input:checked):hover { background-color: fade(@text-color-error, 30%); }
+          &:hover {
+            background-color: fade(@text-color-error, 10%);
+          }
+          &:has(input:checked) {
+            background-color: fade(@text-color-error, 20%);
+            font-weight: bold;
+          }
+          &:has(input:checked):hover {
+            background-color: fade(@text-color-error, 30%);
+          }
         }
 
         &.warning {
-          &:hover { background-color: fade(@text-color-warning, 10%); }
-          &:has(input:checked) { background-color: fade(@text-color-warning, 20%); font-weight: bold; }
-          &:has(input:checked):hover { background-color: fade(@text-color-warning, 30%); }
+          &:hover {
+            background-color: fade(@text-color-warning, 10%);
+          }
+          &:has(input:checked) {
+            background-color: fade(@text-color-warning, 20%);
+            font-weight: bold;
+          }
+          &:has(input:checked):hover {
+            background-color: fade(@text-color-warning, 30%);
+          }
         }
 
         &.info {
-          &:hover { background-color: fade(@text-color-info, 10%); }
-          &:has(input:checked) { background-color: fade(@text-color-info, 20%); font-weight: bold; }
-          &:has(input:checked):hover { background-color: fade(@text-color-info, 30%); }
+          &:hover {
+            background-color: fade(@text-color-info, 10%);
+          }
+          &:has(input:checked) {
+            background-color: fade(@text-color-info, 20%);
+            font-weight: bold;
+          }
+          &:has(input:checked):hover {
+            background-color: fade(@text-color-info, 30%);
+          }
         }
       }
     }
@@ -255,7 +291,9 @@
         border-radius: 3px;
         cursor: pointer;
         text-decoration: none;
-        transition: background-color 0.15s ease, color 0.15s ease;
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
 
         &:hover {
           color: @text-color-highlight;
@@ -323,7 +361,9 @@
   // Animation
   opacity: 0;
   transform: translateY(4px);
-  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out;
 
   &.visible {
     opacity: 1;
@@ -399,7 +439,9 @@
       border-radius: 3px;
       cursor: pointer;
       text-decoration: none;
-      transition: background-color 0.15s ease, color 0.15s ease;
+      transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
 
       &:hover {
         color: @text-color-highlight;

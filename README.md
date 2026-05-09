@@ -43,19 +43,19 @@ Commands available in `atom-text-editor:not([mini])`:
 
 ## Configuration
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| `lintPreviewTabs` | Lint tabs while in preview status | `true` |
-| `lintOnOpen` | Lint files when opened | `true` |
-| `lintOnChange` | Lint while typing (if supported by provider) | `true` |
-| `lintOnChangeInterval` | Debounce interval for lint-on-change (ms) | `300` |
-| `ignoreGlob` | Glob pattern for files to ignore | `**/*.min.{js,css}` |
-| `disabledProviders` | List of disabled linter provider names | `[]` |
-| `defaultSortMethod` | Default sort method for linter panel | `position` |
-| `showHoverTooltip` | Show linter messages when hovering over issues | `true` |
-| `largeFileLineCount` | Skip inline decorations for files with more lines | `20000` |
-| `longLineLength` | Skip inline decorations if any line exceeds this length | `4000` |
-| `scrollMapState` | Display linter markers on scroll bar | `true` |
+| Setting                | Description                                             | Default             |
+| ---------------------- | ------------------------------------------------------- | ------------------- |
+| `lintPreviewTabs`      | Lint tabs while in preview status                       | `true`              |
+| `lintOnOpen`           | Lint files when opened                                  | `true`              |
+| `lintOnChange`         | Lint while typing (if supported by provider)            | `true`              |
+| `lintOnChangeInterval` | Debounce interval for lint-on-change (ms)               | `300`               |
+| `ignoreGlob`           | Glob pattern for files to ignore                        | `**/*.min.{js,css}` |
+| `disabledProviders`    | List of disabled linter provider names                  | `[]`                |
+| `defaultSortMethod`    | Default sort method for linter panel                    | `position`          |
+| `showHoverTooltip`     | Show linter messages when hovering over issues          | `true`              |
+| `largeFileLineCount`   | Skip inline decorations for files with more lines       | `20000`             |
+| `longLineLength`       | Skip inline decorations if any line exceeds this length | `4000`              |
+| `scrollMapState`       | Display linter markers on scroll bar                    | `true`              |
 
 ## Provided Service `linter-indie`
 
