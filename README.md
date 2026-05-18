@@ -13,8 +13,9 @@ Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](h
 - **Linter Panel**: Sortable table view of all linter messages with filtering.
 - **Inline Bubbles**: Hover-style message display at cursor position.
 - **Editor Highlighting**: Underline and highlight decorations for linted ranges.
-- **Multiple Sort Methods**: Sort by severity, position, or provider.
+- **Multiple Sort Methods**: Sort by severity, position, or provider. Cell index is used as a primary sort key for notebook messages.
 - **Linter Management**: Enable/disable individual linter providers.
+- **Jupyter Notebook support**: Works with `.ipynb` files via the `linter-adapter` service. Messages are mapped to individual cells and the panel shows `[cell]:line:col` position.
 - **Scrollmap**: Shows linter markers in the scrollbar via [scrollmap](https://github.com/asiloisad/pulsar-scrollmap).
 - **Reference links**: Clickable references in messages to open related files. See [latex-tools](https://github.com/asiloisad/pulsar-latex-tools) for usage example.
 - **Markdown rendering**: Message excerpts support markdown formatting in tooltips and panel.
@@ -29,10 +30,7 @@ To install `linter-bundle` search for [linter-bundle](https://web.pulsar-edit.de
 Commands available in `atom-workspace`:
 
 - `linter-bundle:toggle-panel`: <kbd>Alt+L</kbd> toggle the linter panel visibility,
-- `linter-bundle:toggle-linter`: toggle a linter provider on/off.
-
-Commands available in `atom-text-editor:not([mini])`:
-
+- `linter-bundle:toggle-linter`: toggle a linter provider on/off,
 - `linter-bundle:lint`: manually trigger linting on the current file,
 - `linter-bundle:debug`: show debug information about active linters,
 - `linter-bundle:state`: toggle linting for the current editor,
@@ -102,6 +100,56 @@ module.exports = {
 
     // Clear all messages
     indie.clearMessages();
+  },
+};
+```
+
+## Consumed Service `linter-adapter`
+
+Allows non-TextEditor pane items (such as Jupyter notebooks) to integrate with the linter panel. The adapter maps linter messages to the correct item, handles navigation, and provides cursor-aware message lookup.
+
+In your `package.json`:
+
+```json
+{
+  "providedServices": {
+    "linter-adapter": {
+      "versions": {
+        "1.0.0": "provideLinterItemAdapter"
+      }
+    }
+  }
+}
+```
+
+In your main module:
+
+```javascript
+module.exports = {
+  provideLinterItemAdapter() {
+    return {
+      // Return true if this adapter handles the given pane item
+      handlesItem: (item) => item instanceof MyCustomEditor,
+
+      // Return the TextEditor that linters should lint for this item (for grammar/path detection)
+      getTextEditorForItem: (item) => item.getSourceEditor(),
+
+      // Filter all linter messages down to those relevant for this item
+      getMessagesForItem: (item, allMessages) =>
+        allMessages.filter((m) => m.location?.file === item.getPath()),
+
+      // Return the message at the current cursor position (or undefined)
+      getCurrentMessage: (item, messages) => item.getMessageAtCursor(messages),
+
+      // Return the next message after the current cursor position
+      getNextMessage: (item, messages) => item.getNextMessage(messages),
+
+      // Return the previous message before the current cursor position
+      getPreviousMessage: (item, messages) => item.getPreviousMessage(messages),
+
+      // Scroll the item to the given message
+      revealMessage: (item, message) => item.revealMessage(message),
+    };
   },
 };
 ```

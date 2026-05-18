@@ -29,6 +29,11 @@
       "versions": {
         "^1.0.0": "consumeStatusBar"
       }
+    },
+    "linter-adapter": {
+      "versions": {
+        "1.0.0": "consumeItemLinterAdapter"
+      }
     }
   },
   "providedServices": {

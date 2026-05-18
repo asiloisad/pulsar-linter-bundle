@@ -27,24 +27,24 @@
   background-size: var(--linter-dot-size) var(--linter-dot-size);
   background-position: calc(100% - 0.5em) 50%;
 
-  &.error {
+  &.info:not(.warning):not(.error) {
     background-image: radial-gradient(
       circle,
-      @background-color-error calc(var(--linter-dot-size) / 2),
+      @background-color-info calc(var(--linter-dot-size) / 2),
       transparent calc(var(--linter-dot-size) / 2)
     );
   }
-  &.warning {
+  &.warning:not(.error) {
     background-image: radial-gradient(
       circle,
       @background-color-warning calc(var(--linter-dot-size) / 2),
       transparent calc(var(--linter-dot-size) / 2)
     );
   }
-  &.info {
+  &.error {
     background-image: radial-gradient(
       circle,
-      @background-color-info calc(var(--linter-dot-size) / 2),
+      @background-color-error calc(var(--linter-dot-size) / 2),
       transparent calc(var(--linter-dot-size) / 2)
     );
   }
