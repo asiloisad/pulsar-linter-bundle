@@ -10,7 +10,7 @@ Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](h
 
 - **Unified Package**: Combines linter core functionality with UI in a single package.
 - **Status Bar Integration**: Shows error, warning, and info counts in the status bar. Left-click toggles panel, middle-click toggles file/project mode, Ctrl+middle-click clears messages, right-click jumps to next, Ctrl+right-click jumps to previous.
-- **Linter Panel**: Sortable table view of all linter messages with filtering.
+- **Linter Panel**: Sortable table view of all linter messages with filtering. Supports keyboard navigation when focused: <kbd>Up</kbd>/<kbd>Down</kbd> move between rows, <kbd>Enter</kbd> navigates to the message, <kbd>Escape</kbd> returns focus to the editor.
 - **Inline Bubbles**: Hover-style message display at cursor position.
 - **Editor Highlighting**: Underline and highlight decorations for linted ranges.
 - **Multiple Sort Methods**: Sort by severity, position, or provider. Cell index is used as a primary sort key for notebook messages.
@@ -29,7 +29,8 @@ To install `linter-bundle` search for [linter-bundle](https://web.pulsar-edit.de
 
 Commands available in `atom-workspace`:
 
-- `linter-bundle:toggle-panel`: <kbd>Alt+L</kbd> toggle the linter panel visibility,
+- `linter-bundle:toggle-focus`: <kbd>Alt+L</kbd> focus the panel (or return focus to the editor if already focused), opening the panel if needed,
+- `linter-bundle:toggle-panel`: toggle the linter panel visibility,
 - `linter-bundle:toggle-linter`: toggle a linter provider on/off,
 - `linter-bundle:lint`: manually trigger linting on the current file,
 - `linter-bundle:debug`: show debug information about active linters,
