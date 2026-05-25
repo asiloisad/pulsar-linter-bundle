@@ -10,7 +10,7 @@ Fork of [linter](https://github.com/steelbrain/linter) and [linter-ui-default](h
 
 - **Unified Package**: Combines linter core functionality with UI in a single package.
 - **Status Bar Integration**: Shows error, warning, and info counts in the status bar. Left-click toggles panel, middle-click toggles file/project mode, Ctrl+middle-click clears messages, right-click jumps to next, Ctrl+right-click jumps to previous.
-- **Linter Panel**: Sortable table view of all linter messages with filtering. Supports keyboard navigation when focused: <kbd>Up</kbd>/<kbd>Down</kbd> move between rows, <kbd>Enter</kbd> navigates to the message, <kbd>Escape</kbd> returns focus to the editor.
+- **Linter Panel**: Sortable table view of all linter messages with filtering. Supports keyboard navigation when focused.
 - **Inline Bubbles**: Hover-style message display at cursor position.
 - **Editor Highlighting**: Underline and highlight decorations for linted ranges.
 - **Multiple Sort Methods**: Sort by severity, position, or provider. Cell index is used as a primary sort key for notebook messages.
@@ -29,32 +29,47 @@ To install `linter-bundle` search for [linter-bundle](https://web.pulsar-edit.de
 
 Commands available in `atom-workspace`:
 
-- `linter-bundle:toggle-focus`: <kbd>Alt+L</kbd> focus the panel (or return focus to the editor if already focused), opening the panel if needed,
+- `linter-bundle:toggle-focus`: focus the panel (or return focus to the editor if already focused), opening the panel if needed,
 - `linter-bundle:toggle-panel`: toggle the linter panel visibility,
 - `linter-bundle:toggle-linter`: toggle a linter provider on/off,
 - `linter-bundle:lint`: manually trigger linting on the current file,
 - `linter-bundle:debug`: show debug information about active linters,
 - `linter-bundle:state`: toggle linting for the current editor,
 - `linter-bundle:inspect`: show message bubble at cursor position,
-- `linter-bundle:next`: <kbd>Alt+'</kbd> jump to next linter message,
-- `linter-bundle:previous`: <kbd>Alt+;</kbd> jump to previous linter message,
+- `linter-bundle:next`: jump to next linter message,
+- `linter-bundle:previous`: jump to previous linter message,
 - `linter-bundle:clear`: clear linter messages for the current editor.
 
-## Configuration
+## Customization
 
-| Setting                | Description                                             | Default             |
-| ---------------------- | ------------------------------------------------------- | ------------------- |
-| `lintPreviewTabs`      | Lint tabs while in preview status                       | `true`              |
-| `lintOnOpen`           | Lint files when opened                                  | `true`              |
-| `lintOnChange`         | Lint while typing (if supported by provider)            | `true`              |
-| `lintOnChangeInterval` | Debounce interval for lint-on-change (ms)               | `300`               |
-| `ignoreGlob`           | Glob pattern for files to ignore                        | `**/*.min.{js,css}` |
-| `disabledProviders`    | List of disabled linter provider names                  | `[]`                |
-| `defaultSortMethod`    | Default sort method for linter panel                    | `position`          |
-| `showHoverTooltip`     | Show linter messages when hovering over issues          | `true`              |
-| `largeFileLineCount`   | Skip inline decorations for files with more lines       | `20000`             |
-| `longLineLength`       | Skip inline decorations if any line exceeds this length | `4000`              |
-| `scrollMapState`       | Display linter markers on scroll bar                    | `true`              |
+The style can be adjusted according to user preferences in the `styles.less` file:
+
+- e.g. solid underline instead of wavy:
+
+```less
+.linter-text {
+  &.error {
+    background-image: none;
+    border-bottom: 1px solid @text-color-error;
+  }
+  &.warning {
+    background-image: none;
+    border-bottom: 1px solid @text-color-warning;
+  }
+  &.info {
+    background-image: none;
+    border-bottom: 1px solid @text-color-info;
+  }
+}
+```
+
+- e.g. change gutter dot size:
+
+```less
+:root {
+  --linter-dot-size: 6px;
+}
+```
 
 ## Provided Service `linter-indie`
 
@@ -207,37 +222,6 @@ module.exports = {
     };
   },
 };
-```
-
-## Customization
-
-The style can be adjusted according to user preferences in the `styles.less` file:
-
-- e.g. solid underline instead of wavy:
-
-```less
-.linter-text {
-  &.error {
-    background-image: none;
-    border-bottom: 1px solid @text-color-error;
-  }
-  &.warning {
-    background-image: none;
-    border-bottom: 1px solid @text-color-warning;
-  }
-  &.info {
-    background-image: none;
-    border-bottom: 1px solid @text-color-info;
-  }
-}
-```
-
-- e.g. change gutter dot size:
-
-```less
-:root {
-  --linter-dot-size: 6px;
-}
 ```
 
 ## Contributing
