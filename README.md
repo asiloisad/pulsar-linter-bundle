@@ -120,6 +120,51 @@ module.exports = {
 };
 ```
 
+## Provided Service `mcp-tools`
+
+Provides MCP tools for [pulsar-mcp](https://github.com/asiloisad/pulsar-pulsar-mcp). The service currently exposes `GetLinterMessages`, a read-only tool that returns diagnostics from the linter panel.
+
+The tool follows the current linter panel view mode:
+
+- `file`: returns messages for the active editor,
+- `project`: returns all known messages across the project.
+
+Returned data has the shape:
+
+```json
+{
+  "mode": "file",
+  "path": "/path/to/current/file.js",
+  "messages": [
+    {
+      "severity": "warning",
+      "excerpt": "Warning message",
+      "linterName": "my-linter",
+      "file": "/path/to/current/file.js",
+      "range": {
+        "start": { "row": 0, "column": 0 },
+        "end": { "row": 0, "column": 1 }
+      },
+      "url": null
+    }
+  ]
+}
+```
+
+In `package.json` this service is provided as:
+
+```json
+{
+  "providedServices": {
+    "mcp-tools": {
+      "versions": {
+        "1.0.0": "provideMcpTools"
+      }
+    }
+  }
+}
+```
+
 ## Consumed Service `linter-adapter`
 
 Allows non-TextEditor pane items (such as Jupyter notebooks) to integrate with the linter panel. The adapter maps linter messages to the correct item, handles navigation, and provides cursor-aware message lookup.
