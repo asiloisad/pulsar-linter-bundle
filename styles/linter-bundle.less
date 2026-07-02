@@ -59,7 +59,15 @@
     border-color: @text-color-highlight;
   }
 
+  &.linting-disabled {
+    border-color: @text-color-warning;
+  }
+
   &.linter-status-hidden {
+    display: none;
+  }
+
+  .linter-disabled-hidden {
     display: none;
   }
 
@@ -67,6 +75,9 @@
     margin-left: 0.5em;
   }
   a {
+    &.linter-disabled-indicator {
+      color: @text-color-warning;
+    }
     &.text-error {
       color: @text-color-error;
     }
